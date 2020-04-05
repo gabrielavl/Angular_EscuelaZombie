@@ -1,0 +1,30 @@
+
+<div class="modal fade" #modalZombieEdit  id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar información </h5>
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="position-relative form-group"><label for="nombre" class="">Nombre</label><input [(ngModel)]="nombre" name="nombre" id="nombreEdit" placeholder="" type="text" class="form-control form-control-sm"></div>
+                <div class="position-relative form-group"><label for="email" class="">Email</label><input [(ngModel)]="email" name="email" id="emailEdit" placeholder="" type="email" class="form-control form-control-sm" disabled="true"></div>
+                <div class="position-relative form-group"><label for="tipo" class="">Tipo</label><select  [(ngModel)]="tipo" name="tipo" id="tipoEdit" placeholder="" class="form-control form-control-sm">
+                    <option value="Zombie alumno"> Zombie alumno</option>
+                    <option value="Zombie maestro">Zombie maestro</option>
+
+                </select></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="EditarZombieInfo()">Guardar cambios</button>
+            </div>
+            <div class="card">
+                <div class="card-body" id="mensajeErrorZombieEdit" style="color: red;"></div>
+            </div>
+        </div>  
+    </div>
+</div>

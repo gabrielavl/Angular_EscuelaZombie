@@ -1,0 +1,31 @@
+<div class="card-body"><h5 class="card-title">Cerebros</h5>
+    <table class="mb-0 table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Sabor</th>
+            <th>Descripcion</th>
+            <th>IQ</th>
+            <th>Acciones</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let cerebro of cerebros | async; let i = index">
+            <th scope="row"> {{ i+1 }} </th>
+            <td>{{ cerebro.sabor }}</td>
+            <td>{{ cerebro.descripcion }}</td>
+            <td>{{ cerebro.iq }}</td>
+
+            <td>
+                <button href="/cerebros" (click)="EliminarCerebro(cerebro._id)"><i class="fas fa-trash"></i></button>
+                <button (click)="DatosCerebro(cerebro.sabor, cerebro. descripcion, cerebro.iq)"  data-toggle="modal" data-target="#modalCerebroEdit"><i class="fas fa-eraser"></i></button>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <button type="button" class="btn mr-2 mb-2 btn-primary" 
+    data-toggle="modal" data-target="#modalCerebro">Agregar cerebro</button>
+</div>

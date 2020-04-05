@@ -1,0 +1,33 @@
+
+<div class="modal fade" #mCerebroEdit  id="modalCerebroEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar información </h5>
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="position-relative form-group"><label for="saborEdit" class="">Sabor</label><select [(ngModel)]="sabor" name="saborEdit" id="saborEdit" class="form-control form-control-sm">
+                    <option>Picante</option>
+                    <option>Amargo</option>
+                    <option>Dulce</option>
+                    <option>Salado</option>
+                    <option>Ácido</option>
+
+                </select></div>
+                <div class="position-relative form-group"><label for="descriptionEdit" class="">Descripcion</label><input [(ngModel)]="descripcion" name="descriptionEdit" id="descriptionEdit" placeholder="Descripción" type="text" class="form-control form-control-sm"></div>
+                <div class="position-relative form-group"><label for="iqEdit" class="">IQ</label><input [(ngModel)]="iq" name="iqEdit" id="iqEdit" placeholder="IQ" type="number" class="form-control form-control-sm"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="EditarCerebroInfo()">Guardar cambios</button>
+            </div>
+            <div class="card">
+                <div class="card-body" id="mensajeErrorCerebroEdit" style="color: red;"></div>
+            </div>
+        </div>  
+    </div>
+</div>
