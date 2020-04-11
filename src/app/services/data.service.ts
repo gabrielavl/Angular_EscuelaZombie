@@ -15,6 +15,12 @@ export class DataService {
   private updateCerebros$ = new Subject<any>();
   cerebroObservable = this.updateCerebros$.asObservable();
 
+  private updateCompraCerebros$ = new Subject<any>();
+  compraCerebroObservable = this.updateCompraCerebros$.asObservable();
+
+  private updateInfoCerebroComprado$ = new Subject<any>();
+  infoCerebroCompradoObservable = this.updateInfoCerebroComprado$.asObservable();
+
   constructor(private _client: HttpClient) { }
 
 async obtenerZombies(zombiesOfUser: string) {
@@ -84,6 +90,45 @@ actualizarCerebroInfo(flavor: string, description: string, IQ: string, _id: stri
 DeleteCerebro(id) {
   return this._client.delete(apiUrl + 'cerebros/delete/' + id);
 }
+
+
+// SECCION GRAFICAS __________________________________________________________________
+
+ContarSabores(usuario) {
+  let sabores = this._client.get<any>(apiUrl + 'dashboard/graficaSabores/' + usuario);
+  return sabores;
+}
+
+ContarCerebros(usuario) {
+  let usuariosCerebros = this._client.get<any>(apiUrl + 'dashboard/graficaUsuarios/' + usuario);
+  return usuariosCerebros;
 }
 
 
+
+// SECCION COMPRAS (CEREBRO)_____________________________________________________________________
+
+async obtenerInformacionCompras(user: string) {
+  let informacionCompra = await this._client.get<any>(apiUrl + 'cerebros/compras/' + user);
+  console.log(informacionCompra);
+  return this.updateCompraCerebros$.next(informacionCompra);
+}
+
+guardarCompra(email: string, cerebro, cantidadCerebros: number, formaEnvio: string, fPedido: string, fEntrega: string ) {
+  let nuevaCompra = {
+    emailUsuario: email,
+    cerebroSeleccionado: cerebro,
+    cantidad: cantidadCerebros,
+    metodoEnvio: formaEnvio,
+    fechaPedido: fPedido,
+    fechaEntrega: fEntrega
+  };
+  return this._client.post(apiUrl + 'cerebros/compras/new', nuevaCompra);
+}
+
+obtenerCompraInfo(idCerebro: string) {
+  let cerebroComprado = this._client.get<any>(apiUrl + 'cerebros/compras/cerebro/' + idCerebro);
+  this.updateInfoCerebroComprado$.next(cerebroComprado);
+  return cerebroComprado;
+}
+}

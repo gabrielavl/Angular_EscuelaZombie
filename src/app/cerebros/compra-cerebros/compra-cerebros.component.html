@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-md-7">
+        <div class="main-card mb-4 card">
+            <div class="card-body"><h5 class="card-title">Ordenar cerebro</h5>
+                <form class="">                                                                            
+                    <div class="position-relative form-group">
+                        <label for="cerebroSabor" class="">Seleccionar</label>
+                        <select [(ngModel)]="cerebroSeleccionado" multiple="" name="brainFlavor" id="cerebroSabor" class="form-control">
+                            <option *ngFor="let cerebro of cerebrosUsuario | async; let i = index" value="{{cerebro._id}}">#{{i+1}} |  {{ cerebro.sabor }} | {{ cerebro.descripcion }} | {{cerebro.iq}}</option>
+                        </select>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label for="cantidadPedido" class="">Cantidad</label>
+                        <input [(ngModel)]="cantidad" name="quantityOrder" id="cantidadPedido" min="1" max="100" type="number" class="form-control form-control-sm" value="1">
+                    </div>
+
+                    <fieldset class="position-relative form-group">
+                        <div class="position-relative form-check">
+                            <label class="form-check-label">
+                                <input [(ngModel)]="metodoEnvio"  name="typeOrderInput" type="radio" class="form-check-input" value="Bronce">Bronce</label>
+                        </div>
+                        <div class="position-relative form-check">
+                            <label class="form-check-label">
+                                <input [(ngModel)]="metodoEnvio"  name="typeOrderInput" type="radio" class="form-check-input" value="Silver">Silver</label>
+                        </div>
+                        <div class="position-relative form-check">
+                            <label class="form-check-label">
+                                <input [(ngModel)]="metodoEnvio"  name="typeOrderInput" type="radio" class="form-check-input" value="Gold">Gold</label>
+                        </div>
+                    </fieldset>
+                    
+                    <button class="mt-1 btn btn-primary" (click)="realizarCompra()">Comprar cerebro</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <p>Órdenes realizadas</p>
+        <table class="mb-0 table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Ver cerebro</th>
+                <th>Cantidad</th>
+                <th>Fecha compra</th>
+                <th>Fecha entrega</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let info of infoPedidos | async; let i = index">
+                <th scope="row"> {{ i+1 }} </th>
+                <td>
+                    <button (click)="VerInfoCerebro(info.cerebroSeleccionado)" data-toggle="modal" data-target="#modalVerCerebros"><i class="fas fa-info"></i></button>
+                </td>
+                <td>{{info.cantidad}}</td>
+                <td>{{info.fechaPedido}}</td>
+                <td>{{info.fechaEntrega}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>

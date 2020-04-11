@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 
@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-cerebros',
   templateUrl: './cerebros.component.html',
-  styleUrls: ['./cerebros.component.css']
 })
 export class CerebrosComponent implements OnInit {
 

@@ -24,6 +24,8 @@ import { CerebrosModalComponent } from './modal/cerebros-modal/cerebros-modal.co
 import { ZombiesModalEditComponent } from './modal/zombies-modal-edit/zombies-modal-edit.component';
 import { AuthService } from './services/auth.service';
 import { CerebroModalEditComponent } from './modal/cerebro-modal-edit/cerebro-modal-edit.component';
+import { CompraCerebrosComponent } from './cerebros/compra-cerebros/compra-cerebros.component';
+import { VerCerebroCompradoComponent } from './modal/ver-cerebro-comprado/ver-cerebro-comprado.component';
 
 
 
@@ -46,6 +48,8 @@ import { CerebroModalEditComponent } from './modal/cerebro-modal-edit/cerebro-mo
     CerebrosModalComponent,
     ZombiesModalEditComponent,
     CerebroModalEditComponent,
+    CompraCerebrosComponent,
+    VerCerebroCompradoComponent,
 
   ],
   imports: [
